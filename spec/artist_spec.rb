@@ -1,3 +1,5 @@
+require 'pry'
+
 describe 'Artist' do
   let(:artist) {Artist.new('Michael Jackson')}
 
@@ -35,6 +37,7 @@ describe 'Artist' do
     it 'finds or creates an artist by name maintaining uniqueness of objects by name property' do
       artist_1 = Artist.find_or_create_by_name("Michael Jackson")
       artist_2 = Artist.find_or_create_by_name("Michael Jackson")
+      #binding.pry
       expect(artist_1).to eq(artist_2)
     end
 
@@ -50,6 +53,7 @@ describe 'Artist' do
       billie_jean = Song.new("Billie Jean")
       artist.add_song(dirty_diana)
       artist.add_song(billie_jean)
+      #binding.pry
       expect{artist.print_songs}.to output("Dirty Diana\nBillie Jean\n").to_stdout
     end
   end
